@@ -29,4 +29,8 @@ Get the dimensions of a data set.
 dim(data)
 ```
 
-
+Exit the shell.
+```
+quit()
+quit("no")  # Quit without saving (and avoid the prompt to save)
+```
