@@ -23,13 +23,6 @@ c(1,2,3)  # Creates vector [ 1, 2, 3 ]
 c(1:5)    # Creates vector [ 1, 2, 3, 4, 5 ]
 ```
 
-Plot some values.
-```
-x=c(0:100)
-y=c(100:200)
-plot(x,y)
-```
-
 Get the dimensions of a data set.
 ```
 dim(data)
@@ -39,6 +32,33 @@ Exit the shell.
 ```
 quit()
 quit("no")  # Quit without saving (and avoid the prompt to save)
+```
+
+Plot some values.
+```
+x=c(0:100)
+y=c(100:200)
+plot(x,y)
+```
+
+Generate scatter plots for a set of data.
+```
+plot(dataset)
+# Only include a subset of the data set
+plot(Carseats[c(1,6,11)])
+```
+
+Run simple linear regression on some data.
+```
+lm.fit=lm(response~predictor,data=datasource)
+```
+
+Run mulitple linear regression.
+```
+lm.fit=lm(response~.,data=datasource) # the . indicates use all the remaining names in the data source as predictors
+lm.fit=lm(response~pred1+pred2)       # use two predictors
+lm.fit=lm(response~pred1+pred2+pred3+pred2:pred3) # the : is used to include the interaction term between two predictors
+lm.fit=lm(response~pred1*pred2)       # use the individual predictors as well as the interaction term of the two predictors
 ```
 
 Generate a contour plot for the coefficients generated from RSS (residual sum of squares).  
@@ -69,4 +89,9 @@ m=which.min(RSS)
 contour(a.grid-b*mean(data$weight),b.grid,RSS,xlab=expression(beta[0]),ylab=expression(beta[1]),levels=c(833,834,835,836,837),axes=T,frame.plot=T,col=4,drawlabels=T)
 
 points(a-b*mean(data$weight),b,col=2,pch=19,cex=1.5)
+```
+
+Compute the confidence interval of the coefficients for a linear regression.
+```
+confint(lm.fit)
 ```
